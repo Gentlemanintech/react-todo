@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, TextField } from '@mui/material';
 
-const TodoInput = () => {
+const TodoInput = ({groupName, setGroupName}) => {
     return (
         <Box sx={{
             position: 'fixed',
@@ -18,6 +18,8 @@ const TodoInput = () => {
                 variant="standard"
                 placeholder="What is the Todo for today..."
                 sx={{ flexGrow: 1, marginRight: '20px' }}
+                value = {groupName}
+                onChange={(e) => setGroupName(e.target.value)}
             />
             <Button variant="contained" color="primary">
                 Add Group

@@ -11,13 +11,8 @@ import FormGroup from '@mui/material/FormGroup';
 import Menu from '@mui/material/Menu';
 import { useState } from 'react';
 
-const Header = () => {
-    const [auth, setAuth] = useState(true);
+const Header = ({isLoggedIn, setIsLoggedIn}) => {
     const [anchorEl, setAnchorEl] = useState(null);
-  
-    const handleChange = (event) => {
-      setAuth(event.target.checked);
-    };
   
     const handleMenu = (event) => {
       setAnchorEl(event.currentTarget);
@@ -31,23 +26,13 @@ const Header = () => {
         <>
          <Box sx={{ flexGrow: 1 }}>
       <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? 'Logout' : 'Login'}
-        />
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             TODO
           </Typography>
-          {auth && (
+          {isLoggedIn && (
             <div>
               <IconButton
                 size="large"
